@@ -1,13 +1,19 @@
 package com.example.stevenauger.testappmac;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class MyActivity extends Activity {
 
+    public final static String EXTRA_MESSAGE = "com.example.stevenauger.testappmac.MESSAGE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,5 +38,22 @@ public class MyActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void sendMainMessage(View view) {
+        EditText editText = (EditText) findViewById(R.id.edit_message);
+        TextView textView = (TextView) findViewById(R.id.textBox);
+        textView.setText(editText.getText().toString());
+
+
+        // Set the text view as the activity layout
+
+        //setContentView(textView);
+    }
+    public void sendMessage(View view){
+        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        EditText editText = (EditText) findViewById(R.id.edit_message);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 }
