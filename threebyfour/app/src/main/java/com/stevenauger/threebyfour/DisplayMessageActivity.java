@@ -2,6 +2,7 @@ package com.stevenauger.threebyfour;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 public class DisplayMessageActivity extends Activity {
 
+    private GLSurfaceView mGLSurfaceView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,12 +19,11 @@ public class DisplayMessageActivity extends Activity {
         Intent intent = getIntent();
         String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
         // Create the text view
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setText(message);
+        mGLSurfaceView = new MyGLSurfaceView(this);
+        //setText(message);
 
         // Set the text view as the activity layout
-        setContentView(textView);
+        setContentView(mGLSurfaceView);
     }
 
 
