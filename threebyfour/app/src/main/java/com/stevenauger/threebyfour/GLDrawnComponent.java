@@ -21,8 +21,12 @@ public class GLDrawnComponent {
                     "  gl_FragColor = vColor;" +
                     "}";
 
-    float color[] = { 0.63671875f, 0.76953125f, 0.22265625f, 1.0f };
-    static final int COORDS_PER_VERTEX = 3;
+    public void draw() {
+        //if this gets called LOL YOU SUCK
+    };
+
+    protected float color[] = { 1f, 1f, 1f, 1.0f };
+    protected static final int COORDS_PER_VERTEX = 3;
     protected final int vertexStride = COORDS_PER_VERTEX * 4; // 4 bytes per vertex
     protected final int mProgram;
     protected FloatBuffer vertexBuffer;

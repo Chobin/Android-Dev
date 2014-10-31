@@ -18,6 +18,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
         mRenderer.setContext(context);
         setRenderer(mRenderer);
         setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+        //create game object which has game loop to update data!
 
     }
 
@@ -51,15 +52,22 @@ public class MyGLSurfaceView extends GLSurfaceView {
 
                 float glX = 2*(x - (getWidth()/2.0f))/getWidth();
                 float glY =  -2*(y - (getHeight()/2.0f))/getHeight();
-                mRenderer.onActionDown(glX, glY);
+                mRenderer.onActionMove(glX, glY, 1.0f);
                 requestRender();
                 break;
             case MotionEvent.ACTION_DOWN:
                 //convert screen coordinate to gl coordinates
-                //float glX = 2*(x - (getWidth()/2.0f))/getWidth();
-                //float glY =  -2*(y - (getHeight()/2.0f))/getHeight();
-                //mRenderer.onActionDown(glX, glY);
-                //requestRender();
+                float glXDown = 2*(x - (getWidth()/2.0f))/getWidth();
+                float glYDown =  -2*(y - (getHeight()/2.0f))/getHeight();
+                mRenderer.onActionDown(glXDown, glYDown);
+                requestRender();
+                break;
+            case MotionEvent.ACTION_UP:
+                //convert screen coordinate to gl coordinates
+                float glXUp = 2*(x - (getWidth()/2.0f))/getWidth();
+                float glYUp =  -2*(y - (getHeight()/2.0f))/getHeight();
+                mRenderer.onActionUp(glXUp, glYUp);
+                requestRender();
                 break;
         }
 

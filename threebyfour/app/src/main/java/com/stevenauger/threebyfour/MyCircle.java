@@ -10,7 +10,7 @@ import java.nio.ShortBuffer;
 /**
  * Created by Steven on 11-10-2014.
  */
-public class MyCircle extends GLDrawnComponent{
+public class MyCircle extends GLDrawnComponent implements GLTouchComponent{
 
     private float center_x = 0.0f;
     private float center_y = 0.0f;

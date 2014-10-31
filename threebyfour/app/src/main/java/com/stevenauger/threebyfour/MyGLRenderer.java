@@ -35,6 +35,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer{
         mAngle = 0.0f;
         sString = "hey";
         mCircle = new MyCircle();
+        GameObject inst = GameObject.getInstance();
+        inst.AddDrawnComponent(mCircle);
     }
     public void setContext(Context context)
     {
@@ -48,8 +50,11 @@ public class MyGLRenderer implements GLSurfaceView.Renderer{
         float r = random.nextFloat();
         float r2 = random.nextFloat();
 
+        GameObject inst = GameObject.getInstance();
+        inst.Draw();
+
         // Draw square
-        mCircle.draw();
+        //mCircle.draw();
 
         // Create a rotation for the triangle
 
@@ -129,6 +134,15 @@ public class MyGLRenderer implements GLSurfaceView.Renderer{
         //move the circle
     }
     public void onActionDown(float x, float y)
+    {
+        float curX;
+        float curY;
+        //curX = mCircle.getCurrentX();
+        //curY = mCircle.getCurrentY();
+        //smooth it to go to the new position
+        mCircle.setNewPosition(x,y);
+    }
+    public void onActionUp(float x, float y)
     {
         float curX;
         float curY;
